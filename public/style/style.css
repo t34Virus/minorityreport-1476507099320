@@ -284,12 +284,31 @@ a {
   list-style-type: none;
   margin: .5vw;
 }
+.speech {
+  position: absolute;
+  left: 41vw;
+  width: 41vw;
+  top: 5vw;
+  text-align: center;
+  background: black;
+  border-radius: 1vw;
+}
+.personality {
+  position: absolute;
+  left: 26vw;
+  top: 25vw;
+}
+.tone {
+  position: absolute;
+  left: 63vw;
+  top: 25vw;
+}
 
-  #red, #green, #blue {
+  #red, #green, #blue, #orange, #pink, #yellow, #purple, #black, #magenta, #violet {
     float: left;
     clear: left;
-    width: 300px;
-    margin: 15px;
+    width: 31vw;
+    margin: 1vw;
   }
   #swatch {
     width: 120px;
