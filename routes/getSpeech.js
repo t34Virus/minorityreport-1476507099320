@@ -5,7 +5,7 @@ var fs = require('fs');
 var ytdl = require('ytdl-core');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.post('/', function(req, res) {
 
   	var params = '&part=snippet&q=trump';
 	

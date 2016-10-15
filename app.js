@@ -4,8 +4,9 @@
 
 var express = require('express'), routes = require('./routes'), user = require('./routes/user'), http = require('http'), path = require('path'), fs = require('fs');
 
-var fs = require('fs');
-var ytdl = require('ytdl-core');
+var https = require('https');
+
+var getSpeech = require('./routes/getSpeech');
 
 var app = express();
 
@@ -37,6 +38,7 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/style', express.static(path.join(__dirname, '/views/style')));
+app.use('/getSpeech', getSpeech);
 
 // development only
 if ('development' == app.get('env')) {
@@ -422,22 +424,6 @@ app.get('/api/favorites', function(request, response) {
 
 http.createServer(app).listen(app.get('port'), '0.0.0.0', function() {
 	console.log('Express server listening on port ' + app.get('port'));
-	
-	
-	/*http.get('https://www.googleapis.com/youtube/v3/search', function() { 
-	
-	
-	});*/
-	
-	
-	var url = 'https://www.youtube.com/watch?v=ckmXie8C0A0';
-	
-	//ytdl.getInfo(url, null, function (err, info) {console.log(info)});
-	
-	ytdl(url, { filter: function(format) {  console.log("\n\nFORMAT: --> " + JSON.stringify(format) + "\n\n"); 
-											return format.container === 'mp4' && 
-										    	   format.audioBitrate != undefined; } })
-  	.pipe(fs.createWriteStream('sound.wav'));
   	
 });
 
