@@ -20,7 +20,7 @@ $( document ).ready(function(){
       banner,
       mood_rang;
     console.log(id);
-    $.post('/test',{suggest: id})
+    $.post('/getSpeech',{suggest: id})
     switch(id){
       case 'hillary':
         mood_rang = 'purple';
