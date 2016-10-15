@@ -4,6 +4,9 @@
 
 var express = require('express'), routes = require('./routes'), user = require('./routes/user'), http = require('http'), path = require('path'), fs = require('fs');
 
+var fs = require('fs');
+var ytdl = require('ytdl-core');
+
 var app = express();
 
 var db;
@@ -419,5 +422,15 @@ app.get('/api/favorites', function(request, response) {
 
 http.createServer(app).listen(app.get('port'), '0.0.0.0', function() {
 	console.log('Express server listening on port ' + app.get('port'));
+	console.log(ytdl);
+	
+	var url = 'https://www.youtube.com/watch?v=ckmXie8C0A0';
+	
+	//ytdl.getInfo(url, null, function (err, info) {console.log(info)});
+	
+	ytdl(url, { filter: function(format) {  console.log("\n\nFORMAT: --> " + JSON.stringify(format) + "\n\n"); 
+											return format.container === 'mp4' && 
+										    	   format.audioBitrate != undefined; } })
+  	.pipe(fs.createWriteStream('sound.wav'));
 });
 
