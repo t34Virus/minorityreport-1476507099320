@@ -422,7 +422,13 @@ app.get('/api/favorites', function(request, response) {
 
 http.createServer(app).listen(app.get('port'), '0.0.0.0', function() {
 	console.log('Express server listening on port ' + app.get('port'));
-	console.log(ytdl);
+	
+	
+	/*http.get('https://www.googleapis.com/youtube/v3/search', function() { 
+	
+	
+	});*/
+	
 	
 	var url = 'https://www.youtube.com/watch?v=ckmXie8C0A0';
 	
@@ -432,5 +438,6 @@ http.createServer(app).listen(app.get('port'), '0.0.0.0', function() {
 											return format.container === 'mp4' && 
 										    	   format.audioBitrate != undefined; } })
   	.pipe(fs.createWriteStream('sound.wav'));
+  	
 });
 
